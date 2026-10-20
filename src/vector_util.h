@@ -1,6 +1,7 @@
 #ifndef VECTOR_UTIL_H
 #define VECTOR_UTIL_H
 
+#include <cassert>
 #include <iostream>
 
 #include <SFML/System/Vector2.hpp>

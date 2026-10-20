@@ -1,0 +1,17 @@
+Apply the scale first and the translation second:
+p' = p * scale + translation. This way, the translation itself is not scaled.
+
+The rectangle's corners are (200,150), (600,150), (200,450) and (600,450).
+
+The two counterclockwise triangles are:
+(200,150), (200,450), (600,150)  and (600,150), (200,450), (600,450).
+
+Store the four corners once and use indices 0,2,1,2,3,1 (in
+top-left, top-right, bottom-left, bottom-right order). For this quad, that
+uses 48 bytes for unindexed float positions, or 56 bytes for indexed
+positions and indices. With double positions, the totals are 96 and 88 bytes.
+
+In general, indexing is worthwhile when the space saved by reusing vertices
+is greater than the space used by the indices. For N triangles and U unique
+positions, that is 2S(3N-U) > 12N, where S is 4 bytes for floats or 8 bytes
+for doubles.
